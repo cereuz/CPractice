@@ -10,21 +10,6 @@ void print_array(int *s, int n)  //打印数组的函数
 	printf("\n");
 }
 
-//////////////////////////////////////////
-
-void man(void)
-{
-	printf("抽烟\n");
-	printf("喝酒\n");
-	printf("打牌\n");
-}
-
-void woman(void)
-{
-	printf("化妆\n");
-	printf("逛街\n");
-	printf("网购\n");
-}
 
 int main(void)
 {
