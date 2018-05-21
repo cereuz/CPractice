@@ -12,13 +12,14 @@
  	int i = 0;
  	for(i = 0; i < 10; i++)
  	{
- 		printf("buf[%d] = %d\n", i, buf[i]);
+ 		printf("buf[%d] = %d, ", i, buf[i]);
 	 }
+	 printf("\n");
   } 
  
- int main(void)
+ int main01(void)
  {
- 	int buf[10] = { 0 };
+ 	int buf[1024] = { 0 };
  	buf[0] = 8;
  	buf[1] = 9;
  	buf[4] = 8;
@@ -35,4 +36,17 @@
  	
  	print_array(buf);
  	return 0;
+ }
+ 
+ 
+ int main(void)
+ {
+ 	int buf1[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+ 	int buf2[10];
+ 	memcpy(buf2, buf1, sizeof(buf1));  //将buf1的内容全部拷贝到buf2， 拷贝大小为第三个参数：字节
+	print_array(buf2);
+	
+	memmove(buf2, buf1, sizeof(buf1));  //memmove 函数并没有改变原始内存的值 
+	print_array(buf2);  
+	print_array(buf1);
  }
