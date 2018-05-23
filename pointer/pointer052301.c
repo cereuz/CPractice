@@ -19,6 +19,15 @@ int main01(int argc, char *args[])
 
 int main(int argc, char *args[])
 {
+	char buf[100] = "dir";
+	int i;
+	for(i = 0; i < argc; i++)
+	{
+		strcat(buf, args[i]);
+	}
+	printf("buf = %s\n", buf);
+	return 0;
+	
 	system("dir");
 	return 0;
 }
