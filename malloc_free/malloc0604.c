@@ -9,7 +9,7 @@
 union A
 {
 	int a;
-	char b;
+	char *b;
 	int c;
 	short e;
 };
@@ -26,7 +26,7 @@ int main01(void)
 	return 0;
 }
 
-int main(void)
+int main02(void)
 {
 	union A a;
 	a.a = 0x12345678;
@@ -36,5 +36,21 @@ int main(void)
 	printf("%p, %p\n", &a.a, &a.b);
 	printf("a = %x\n", a.a);
 	printf("b = %x\n", a.b);
+	return 0;
+}
+
+int main(void)
+{
+	union A a;
+	a.b = malloc(100); //b指向了一个堆的地址 
+	free(a.b);
+	//如果联合体中有指针成员，那么一定要使用完这个指针 ，并且free指针之后，才能使用其他成员。 
+	a.a = 10;     //b的值也成了10了 
+//	a.b = 20;
+	
+	printf("%d\n", sizeof(union A));
+	printf("%p, %p\n", &a.a, &a.b);
+	printf("a.a = %d, a.b = %d\n", a.a, a.b);
+//	free(a.b); 
 	return 0;
 }
