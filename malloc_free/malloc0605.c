@@ -46,7 +46,7 @@ int main02(void)
 }
 
 
-int main(void)
+int main03(void)  //写文件 
 {
   char s[1024] = { 0 };	
   FILE *p =	fopen("E:\\testwork\\b.txt", "w");  //用可写的方式打开一个文件  
@@ -68,4 +68,19 @@ int main(void)
   
   printf("end\n"); //屏幕输出提示信息，提示一下程序是否执行正常。 
   return 0;
+}
+
+int main(void) //读文件 
+{
+    char s[1024] = { 0 };
+	FILE *p = fopen("E:\\testwork\\mitanNew0423.txt", "r");  //用读的方式打开一个文件	
+	//foef(p);   //如果已经到了文件结尾，函数返回真 
+	while(!feof(p))   //如果没有到文件结尾，那么就一直循环
+	{
+		memset(s, 0, sizeof(s));
+		fgets(s, sizeof(s), p);  //第一个参数是一个内存地址，第二个参数是这块内存的大小，第三个参数是fopen返回的文件指针 
+        printf("%s", s);
+	 } 
+	fclose(p);
+	return 0; 
 }
