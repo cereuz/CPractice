@@ -35,9 +35,10 @@ int main02(void)
 }
 
 
-int main(void)
+int main03(void)
 {
-	FILE *p = fopen("E:\\testwork\\e2.txt", "rb");  //用读二进制的方式打开一个文件
+//	FILE *p = fopen("E:\\testwork\\e2.txt", "rb");  //用读二进制的方式打开一个文件
+	FILE *p = fopen("E:\\testwork\\2.jpg", "rb");  //用读二进制的方式打开一个文件
 	while(!feof(p))
 	{
 		char buf[1024] = { 0 };
@@ -53,3 +54,32 @@ int main(void)
 	return 0;
 }
 
+int main04(void)
+{
+	FILE *p = fopen("E:\\testwork\\f.dat", "wb");
+	char buf[1024] = { 0 };
+	buf[0] = 'a';
+	buf[1] = 'b';
+	buf[2] = 'c';
+	buf[3] = 'd';
+	fwrite(buf, sizeof(char), 10, p);
+	fclose(p);
+}
+
+int main05(void)
+{
+	FILE *p = fopen("E:\\testwork\\f.dat", "wb");
+	int a = 100;
+	fwrite(&a, sizeof(char), 4, p);
+	fclose(p);
+	return 0;
+}
+
+int main(void)
+{
+	FILE *p = fopen("E:\\testwork\\f.dat", "wb");
+	int a = 0x123456789;
+	fwrite(&a, sizeof(char), 4, p);
+	fclose(p);
+	return 0;
+}
