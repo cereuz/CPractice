@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 
 //二进制加密 
 void code (char *p, size_t n)
@@ -25,7 +26,9 @@ int main(void)
 //	FILE *p = fopen("E:\\testwork\\b.wmv", "rb");
 //	FILE *p1 = fopen("E:\\testwork\\c.wmv", "wb");
 	
-	FILE *p = fopen("E:\\testwork\\c.wmv", "rb");
+	clock_t c1 = clock();   //得到系统当前时间，单位：毫秒 
+	
+	FILE *p = fopen("E:\\testwork\\a.wmv", "rb");
 	FILE *p1 = fopen("E:\\testwork\\d.wmv", "wb");
 
 //	FILE *p = fopen("E:\\testwork\\testx.xml", "rb");
@@ -35,8 +38,9 @@ int main(void)
 //	FILE *p1 = fopen("E:\\testwork\\testc.xml", "wb");
 	
 	
-
+    
 	char buf[1024 * 4];
+//	char buf[102];
 	while(!feof(p))
 	{
 		memset(buf, 0, sizeof(buf));
@@ -47,7 +51,9 @@ int main(void)
 	}
 	fclose(p);
 	fclose(p1);
-	printf("end\n");
+	
+	clock_t c2 = clock();   //得到系统当前时间，单位：毫秒 
+	printf("end!-- %u\n", c2 - c1);
 	return 0;
 	
 }
