@@ -1,0 +1,11 @@
+https://github.com/modood/Administrative-divisions-of-China
+https://github.com/chency147/worldArea
+
+select p.name as "省份", c.name as "城市", a.name as "县/区", s.name as "镇/街", v.name as "村/社区"
+from province p, city c, area a, street s, village v
+where p.code = c.provinceCode and c.code = a.cityCode and a.code = s.areaCode and s.code = v.streetCode and p.name = "湖北省" and c.name = "黄冈市" and a.name = "武穴市"
+
+
+select Con.ContinentName, Cou.CountryName, Pro.ProvinceName, Cit.CityName
+from Continent con, Country cou, Province pro, City cit
+where Con.ContinentId = Cou.ContinentId  and Cou.CountryId = Pro.CountryId  and Pro.ProvinceId = Cit.ProvinceId and Cou.CountryName = "中国"
